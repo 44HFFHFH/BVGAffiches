@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVGAffiches Pro - Communication Visuelle & Formations</title>
+    <meta name="description" content="BVGAffiches - Spécialiste en communication visuelle et formations numériques. Formations en infographie, design graphique, marketing digital et services personnalisés.">
+    
+    <!-- External Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gold: #D4A73E;
+            --dark-gold: #B8932B;
+            --light-gold: #E6C368;
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray-light: #F8F9FA;
+            --gray-medium: #6B7280;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .bg-primary { background-color: var(--primary-gold); }
+        .text-primary { color: var(--primary-gold); }
+        .border-primary { border-color: var(--primary-gold); }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 167, 62, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 167, 62, 0.4);
+            background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-gold);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-gold);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .logo-container {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 24px;
+            color: white;
+            position: relative;
+        }
+        
+        .logo-b {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(212,167,62,0.1) 100%);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .formation-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-gold);
+        }
+        
+        .formation-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212,167,62,0.1);
+        }
+        
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-gold);
+            background: rgba(212,167,62,0.1);
+        }
+        
+        .mobile-menu {
+            display: none;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+            margin-bottom: 3rem;
+        }
+        
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .desktop-menu {
+                display: none;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .formation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 640px) {
+            .formation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/224621883992" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="logo-container">
+                        <span class="logo-b">B</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">BVGAffiches</h1>
+                        <p class="text-xs text-primary font-semibold">PRO</p>
+                    </div>
+                </div>
+                
+                <div class="desktop-menu hidden md:flex space-x-8">
+                    <a href="#accueil" class="nav-link active">Accueil</a>
+                    <a href="#apropos" class="nav-link">À propos</a>
+                    <a href="#formations" class="nav-link">Formations</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <button class="mobile-menu-btn md:hidden text-gray-900">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="mobile-menu md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#accueil" class="nav-link block">Accueil</a>
+                    <a href="#apropos" class="nav-link block">À propos</a>
+                    <a href="#formations" class="nav-link block">Formations</a>
+                    <a href="#services" class="nav-link block">Services</a>
+                    <a href="#contact" class="nav-link block">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-gradient min-h-screen flex items-center relative">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-primary-gold opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="hero-content text-center text-white">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    Boostez votre image avec<br>
+                    <span class="text-primary">le pouvoir du visuel</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-200">
+                    Chez BVGAffiches, nous transformons vos idées en créations percutantes
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#formations" class="btn-primary text-lg px-8 py-4">Réserver une formation</a>
+                    <a href="#services" class="btn-secondary text-lg px-8 py-4">Demander un devis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Ce que nous faisons</h2>
+                <p class="section-subtitle">BVGAffiches est une entreprise de communication visuelle spécialisée dans</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card text-center fade-in">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-palette text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Création graphique</h3>
+                    <p class="text-gray-600">Créations sur mesure pour valoriser votre image de marque</p>
+                </div>
+                
+                <div class="card text-center fade-in">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Formations numériques</h3>
+                    <p class="text-gray-600">Formations pratiques et accessibles pour tous niveaux</p>
+                </div>
+                
+                <div class="card text-center fade-in">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-share-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Contenu digital</h3>
+                    <p class="text-gray-600">Production de contenu pour réseaux sociaux et entreprises</p>
+                </div>
+                
+                <div class="card text-center fade-in">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-video text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Montage vidéo</h3>
+                    <p class="text-gray-600">Montage professionnel et valorisation de votre image</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations Section -->
+    <section id="formations" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Formations pour tous niveaux</h2>
+                <p class="section-subtitle">Nous vous formons aux outils et compétences numériques les plus demandés</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <div class="fade-in">
+                    <img src="https://www.cnfdi.com/images/formations/fiche_formations_site/formation-designer-graphiste.jpg" alt="Formation Design Graphique" class="w-full h-64 object-cover rounded-2xl mb-6">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">✅ En ligne : 400 000 GNF</span>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">🏢 Présentiel : 590 000 GNF</span>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <img src="https://elearningformalis.fr/wp-content/uploads/2021/01/formation-en-ligne-graphiste.jpg" alt="Formation Infographie" class="w-full h-64 object-cover rounded-2xl mb-6">
+                    <div class="text-center">
+                        <p class="text-lg text-gray-600 mb-4">Formations disponibles en présentiel et à distance</p>
+                        <p class="text-lg text-gray-600 mb-4">Planning flexible – Formations courtes ou en modules</p>
+                        <p class="text-lg text-gray-600 mb-6">Attestation fournie à la fin</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="formation-grid">
+                <div class="formation-card fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-image text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Infographie</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Apprenez à créer des visuels percutants pour l'impression et le digital.</p>
+                    <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                        <li>• Utilisation de Canva, Photoshop, Illustrator</li>
+                        <li>• Niveau débutant à intermédiaire</li>
+                    </ul>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://wa.me/224621883992?text=Je%20souhaite%20m'inscrire%20à%20la%20formation%20Infographie" class="btn-primary text-center">Réserver</a>
+                        <a href="tel:+224621883992" class="btn-secondary text-center">📞 +224 621 88 39 92</a>
+                    </div>
+                </div>
+                
+                <div class="formation-card fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-paint-brush text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Design Graphique</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Approfondissez votre maîtrise de la composition, typographie et branding.</p>
+                    <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                        <li>• Théorie des couleurs, mise en page pro</li>
+                        <li>• Design de logo, grilles graphiques</li>
+                    </ul>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://wa.me/224621883992?text=Je%20souhaite%20m'inscrire%20à%20la%20formation%20Design%20Graphique" class="btn-primary text-center">Réserver</a>
+                        <a href="tel:+224621883992" class="btn-secondary text-center">📞 +224 621 88 39 92</a>
+                    </div>
+                </div>
+                
+                <div class="formation-card fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Community Management</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Gérez et développez une communauté engagée autour de votre marque.</p>
+                    <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                        <li>• Stratégie, planification</li>
+                        <li>• Animation de communautés, outils de publication</li>
+                    </ul>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://wa.me/224621883992?text=Je%20souhaite%20m'inscrire%20à%20la%20formation%20Community%20Management" class="btn-primary text-center">Réserver</a>
+                        <a href="tel:+224621883992" class="btn-secondary text-center">📞 +224 621 88 39 92</a>
+                    </div>
+                </div>
+                
+                <div class="formation-card fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-red-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Marketing Digital</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Devenez stratège : apprenez à vendre, convaincre et captiver sur le web.</p>
+                    <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                        <li>• Publicité Facebook/Instagram</li>
+                        <li>• Email marketing, analytics, tunnels de vente</li>
+                    </ul>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://wa.me/224621883992?text=Je%20souhaite%20m'inscrire%20à%20la%20formation%20Marketing%20Digital" class="btn-primary text-center">Réserver</a>
+                        <a href="tel:+224621883992" class="btn-secondary text-center">📞 +224 621 88 39 92</a>
+                    </div>
+                </div>
+                
+                <div class="formation-card fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-lightbulb text-yellow-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Création de Contenu</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Apprenez à produire des visuels, textes et vidéos qui captent l'attention.</p>
+                    <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                        <li>• Storytelling, formats réseaux sociaux</li>
+                        <li>• Scripts, outils de création rapide</li>
+                    </ul>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://wa.me/224621883992?text=Je%20souhaite%20m'inscrire%20à%20la%20formation%20Création%20de%20Contenu" class="btn-primary text-center">Réserver</a>
+                        <a href="tel:+224621883992" class="btn-secondary text-center">📞 +224 621 88 39 92</a>
+                    </div>
+                </div>
+                
+                <div class="formation-card fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-video text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Montage Vidéo</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Montez des vidéos professionnelles pour YouTube, Instagram, Reels et plus.</p>
+                    <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                        <li>• DaVinci Resolve / CapCut / Premiere Pro</li>
+                        <li>• Titrage, transitions, export</li>
+                    </ul>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://wa.me/224621883992?text=Je%20souhaite%20m'inscrire%20à%20la%20formation%20Montage%20Vidéo" class="btn-primary text-center">Réserver</a>
+                        <a href="tel:+224621883992" class="btn-secondary text-center">📞 +224 621 88 39 92</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos Section -->
+    <section id="apropos" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <img src="https://www.ecolelafontaine.fr/wp-content/uploads/2022/04/concepteur-logo-travaillant-ordinateur-bureau.png" alt="Équipe BVGAffiches" class="w-full h-80 object-cover rounded-2xl">
+                </div>
+                <div class="fade-in">
+                    <h2 class="section-title">Qui sommes-nous ?</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        BVGAffiches est une entreprise créative née de la passion pour le design, la pédagogie et la communication visuelle. Notre objectif est simple : valoriser votre image et vous former aux outils du numérique avec efficacité, simplicité et passion.
+                    </p>
+                    
+                    <h3 class="text-2xl font-semibold mb-4 text-primary">Notre vision</h3>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Donner à chacun la capacité de créer, de communiquer et d'exister dans un monde visuel et digital en constante évolution.
+                    </p>
+                    
+                    <h3 class="text-2xl font-semibold mb-4 text-primary">Nos valeurs</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fas fa-target text-white"></i>
+                            </div>
+                            <span class="font-semibold">Simplicité</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-white"></i>
+                            </div>
+                            <span class="font-semibold">Créativité</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fas fa-handshake text-white"></i>
+                            </div>
+                            <span class="font-semibold">Accessibilité</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fas fa-sync text-white"></i>
+                            </div>
+                            <span class="font-semibold">Adaptabilité</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Des services personnalisés</h2>
+                <p class="section-subtitle">Vous avez une affiche à créer ? Un visuel urgent à produire ? Une vidéo à monter ?</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card fade-in">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-file-image text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Supports imprimés</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Affiches professionnelles</li>
+                        <li>• Flyers et brochures</li>
+                        <li>• Cartes de visite</li>
+                        <li>• Catalogues</li>
+                    </ul>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Contenu digital</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Visuels pour réseaux sociaux</li>
+                        <li>• Posts Instagram/Facebook</li>
+                        <li>• Stories animées</li>
+                        <li>• Templates personnalisés</li>
+                    </ul>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-crown text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Identité visuelle</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Création de logos</li>
+                        <li>• Chartes graphiques</li>
+                        <li>• Refonte d'image de marque</li>
+                        <li>• Supports de communication</li>
+                    </ul>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-video text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Production vidéo</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Vidéos promotionnelles</li>
+                        <li>• Interviews professionnelles</li>
+                        <li>• Reels Instagram</li>
+                        <li>• Montage et post-production</li>
+                    </ul>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-magic text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Retouche photo</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Retouche professionnelle</li>
+                        <li>• Détourage d'images</li>
+                        <li>• Corrections colorimétriques</li>
+                        <li>• Montages créatifs</li>
+                    </ul>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-rocket text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Projets sur mesure</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Consultation créative</li>
+                        <li>• Projets spéciaux</li>
+                        <li>• Accompagnement personnalisé</li>
+                        <li>• Solutions innovantes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-xl text-gray-600 mb-8">Vous avez une idée ? Nous la transformons en impact visuel !</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://wa.me/224621883992?text=Je%20souhaite%20demander%20un%20devis" class="btn-primary">Demander un devis</a>
+                    <a href="#contact" class="btn-secondary">Nous envoyer votre brief</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Restons connectés !</h2>
+                <p class="text-xl text-gray-300">Vous avez une question, un projet ou besoin d'un visuel rapidement ?</p>
+                <p class="text-xl text-gray-300">Écrivez-nous ou appelez-nous. Réponse rapide garantie !</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <div class="space-y-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Email</h3>
+                                <a href="mailto:contact@bvgaffiche.com" class="text-primary hover:underline">contact@bvgaffiche.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">WhatsApp</h3>
+                                <a href="https://wa.me/224621883992" class="text-green-400 hover:underline">+224 621 88 39 92</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-phone text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold">Téléphone</h3>
+                                <a href="tel:+224621883992" class="text-blue-400 hover:underline">+224 621 88 39 92</a>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-8">
+                            <h3 class="text-lg font-semibold mb-4">Suivez-nous</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                    <i class="fab fa-facebook-f text-white"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-pink-600 rounded-lg flex items-center justify-center hover:bg-pink-700 transition-colors">
+                                    <i class="fab fa-instagram text-white"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center hover:bg-blue-800 transition-colors">
+                                    <i class="fab fa-linkedin-in text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Nom complet</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2">Sujet</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option>Formation</option>
+                                <option>Devis design</option>
+                                <option>Question générale</option>
+                                <option>Partenariat</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary w-full">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="logo-container">
+                        <span class="logo-b">B</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-white">BVGAffiches</h1>
+                        <p class="text-xs text-primary font-semibold">PRO</p>
+                    </div>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400 mb-2">&copy; 2024 BVGAffiches Pro. Tous droits réservés.</p>
+                    <p class="text-gray-500 text-sm">Communication visuelle & Formations numériques</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Close mobile menu if open
+                document.querySelector('.mobile-menu').classList.remove('active');
+            });
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            const whatsappMessage = `Bonjour BVGAffiches,%0A%0ANom: ${name}%0AEmail: ${email}%0ASujet: ${subject}%0A%0AMessage: ${message}`;
+            
+            window.open(`https://wa.me/224621883992?text=${whatsappMessage}`, '_blank');
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255,255,255,0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255,255,255,0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
